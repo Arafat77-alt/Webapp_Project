@@ -1,5 +1,5 @@
 // Change this to your actual Render URL after deployment
-const BASE_URL = "https://your-app-name.onrender.com"; 
+const BASE_URL = "https://medisafe-api.onrender.com"; 
 
 const medicines = [
   "warfarin", "aspirin", "metformin", "cimetidine",
