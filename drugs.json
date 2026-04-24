@@ -1,0 +1,134 @@
+[
+  {
+    "name": "paracetamol",
+    "use": "Pain relief and fever reduction",
+    "class": "Analgesic",
+    "notes": "Overdose may cause severe liver damage"
+  },
+  {
+    "name": "ibuprofen",
+    "use": "Pain, inflammation, fever",
+    "class": "NSAID",
+    "notes": "Can cause stomach irritation and ulcers"
+  },
+  {
+    "name": "aspirin",
+    "use": "Pain relief, blood thinning",
+    "class": "NSAID",
+    "notes": "Used in heart patients, risk of bleeding"
+  },
+  {
+    "name": "metformin",
+    "use": "Control of type 2 diabetes",
+    "class": "Antidiabetic",
+    "notes": "Common first-line diabetes medication"
+  },
+  {
+    "name": "warfarin",
+    "use": "Prevention of blood clots",
+    "class": "Anticoagulant",
+    "notes": "Requires INR monitoring"
+  },
+  {
+    "name": "amoxicillin",
+    "use": "Bacterial infections",
+    "class": "Antibiotic (Penicillin)",
+    "notes": "Commonly used for respiratory infections"
+  },
+  {
+    "name": "azithromycin",
+    "use": "Bacterial infections",
+    "class": "Macrolide antibiotic",
+    "notes": "Used for respiratory and skin infections"
+  },
+  {
+    "name": "atorvastatin",
+    "use": "Lower cholesterol",
+    "class": "Statin",
+    "notes": "May cause muscle pain in rare cases"
+  },
+  {
+    "name": "simvastatin",
+    "use": "Lower cholesterol",
+    "class": "Statin",
+    "notes": "Avoid with certain antibiotics"
+  },
+  {
+    "name": "omeprazole",
+    "use": "Acid reflux, ulcers",
+    "class": "Proton Pump Inhibitor",
+    "notes": "Long-term use may affect nutrient absorption"
+  },
+  {
+    "name": "pantoprazole",
+    "use": "Acid reflux, GERD",
+    "class": "Proton Pump Inhibitor",
+    "notes": "Used for stomach acid control"
+  },
+  {
+    "name": "lisinopril",
+    "use": "High blood pressure",
+    "class": "ACE inhibitor",
+    "notes": "May cause dry cough"
+  },
+  {
+    "name": "losartan",
+    "use": "High blood pressure",
+    "class": "ARB",
+    "notes": "Alternative to ACE inhibitors"
+  },
+  {
+    "name": "insulin",
+    "use": "Blood sugar control",
+    "class": "Hormone",
+    "notes": "Used in diabetes management"
+  },
+  {
+    "name": "clopidogrel",
+    "use": "Prevents blood clots",
+    "class": "Antiplatelet",
+    "notes": "Used after heart attack or stroke"
+  },
+  {
+    "name": "diazepam",
+    "use": "Anxiety, seizures",
+    "class": "Benzodiazepine",
+    "notes": "Can cause sedation and dependency"
+  },
+  {
+    "name": "fluoxetine",
+    "use": "Depression, anxiety",
+    "class": "SSRI",
+    "notes": "Takes weeks to show effect"
+  },
+  {
+    "name": "tramadol",
+    "use": "Moderate to severe pain",
+    "class": "Opioid analgesic",
+    "notes": "Risk of dependence"
+  },
+  {
+    "name": "digoxin",
+    "use": "Heart failure, arrhythmia",
+    "class": "Cardiac glycoside",
+    "notes": "Narrow therapeutic index"
+  },
+  {
+    "name": "levothyroxine",
+    "use": "Hypothyroidism",
+    "class": "Thyroid hormone",
+    "notes": "Taken on empty stomach"
+  },
+  {
+  "drug1": "metformin",
+  "drug2": "cimetidine",
+  "risk": "MODERATE",
+  "explanation": "May increase metformin levels"
+  },
+  {
+  "name": "cimetidine",
+  "use": "treats ulcers and acid reflux",
+  "class": "H2 blocker",
+  "notes": "can increase levels of other drugs"
+}
+]

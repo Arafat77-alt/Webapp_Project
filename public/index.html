@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediSafe AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" class="logo">
+    <h1 class="title">MediSafe <span>AI</span></h1>
+  </div>
+
+  <div class="main-container">
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel card">
+
+      <h2>Drug Interaction Checker</h2>
+
+      <!-- 🔍 SEARCH AT TOP -->
+      <h3>Search Drug Information</h3>
+      <div class="search-wrapper">
+       <div class="search-container">
+         <input type="text" id="searchDrug" placeholder="Search medicine..." onkeyup="showSuggestions()">
+         <div id="suggestionsBox" class="suggestions-box"></div>
+       </div>
+
+       <button onclick="searchDrug()" class="search-btn">Search</button>
+      </div>
+
+      <div class="result-box" id="drugInfoBox">
+        <p id="drugInfo"></p>
+      </div>
+
+      <!-- INTERACTION INPUT -->
+      <h3>Check Drug Interaction</h3>
+
+      <input list="medicineList" id="drug1" placeholder="Enter Drug 1">
+      <input list="medicineList" id="drug2" placeholder="Enter Drug 2">
+
+      <datalist id="medicineList"></datalist>
+
+      <!-- IMAGE OCR -->
+      <div class="upload-box">
+        <input type="file" onchange="uploadImage(event)">
+        <p id="ocrStatus"></p>
+        <img id="imagePreview">
+        <button onclick="removeImage()" id="removeBtn" style="display:none;">
+          Remove Image
+        </button>
+      </div>
+      <div id="loader" class="loader" style="display:none;"></div>
+
+      <button class="check-btn" onclick="checkInteraction()">
+        Check Interaction
+      </button>
+
+      <div id="resultBox" class="result-box">
+        <p id="result"></p>
+        <p id="explanation"></p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel card">
+
+      <h3>⚠ Known Drug Interactions</h3>
+
+      <div class="interaction major">
+        <b>Warfarin + Aspirin</b>
+        <p>High risk of bleeding</p>
+      </div>
+
+      <div class="interaction moderate">
+        <b>Metformin + Cimetidine</b>
+        <p>May increase drug levels</p>
+      </div>
+
+      <div class="interaction minor">
+        <b>Ibuprofen + Calcium</b>
+        <p>Minor absorption issue</p>
+      </div>
+
+      <div class="interaction safe">
+        <b>Paracetamol</b>
+        <p>Safe when used properly</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

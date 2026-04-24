@@ -1,0 +1,21 @@
+{
+  "name": "medisafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+  "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "string-similarity": "^4.0.4",
+    "tesseract.js": "^7.0.0"
+  }
+  
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "drug1": "warfarin",
+    "drug2": "aspirin",
+    "risk": "MAJOR",
+    "explanation": "Both drugs increase bleeding risk significantly."
+  },
+  {
+    "drug1": "metformin",
+    "drug2": "cimetidine",
+    "risk": "MODERATE",
+    "explanation": "Cimetidine increases metformin concentration in blood."
+  },
+  {
+    "drug1": "ibuprofen",
+    "drug2": "lisinopril",
+    "risk": "MINOR",
+    "explanation": "May reduce effectiveness of blood pressure control."
+  },
+  {
+    "drug1": "paracetamol",
+    "drug2": "alcohol",
+    "risk": "MAJOR",
+    "explanation": "Increases risk of severe liver damage."
+  },
+  {
+    "drug1": "atorvastatin",
+    "drug2": "clarithromycin",
+    "risk": "MAJOR",
+    "explanation": "Increases risk of muscle toxicity and rhabdomyolysis."
+  },
+  {
+    "drug1": "amoxicillin",
+    "drug2": "methotrexate",
+    "risk": "MAJOR",
+    "explanation": "Can increase methotrexate toxicity."
+  },
+  {
+    "drug1": "digoxin",
+    "drug2": "verapamil",
+    "risk": "MAJOR",
+    "explanation": "Increases risk of dangerous heart rhythm problems."
+  },
+  {
+    "drug1": "simvastatin",
+    "drug2": "erythromycin",
+    "risk": "MAJOR",
+    "explanation": "Raises risk of muscle breakdown."
+  },
+  {
+    "drug1": "insulin",
+    "drug2": "beta blockers",
+    "risk": "MODERATE",
+    "explanation": "May mask symptoms of low blood sugar."
+  },
+  {
+    "drug1": "levothyroxine",
+    "drug2": "iron",
+    "risk": "MINOR",
+    "explanation": "Iron may reduce absorption of levothyroxine."
+  },
+  {
+    "drug1": "aspirin",
+    "drug2": "ibuprofen",
+    "risk": "MODERATE",
+    "explanation": "Ibuprofen may reduce cardioprotective effects of aspirin."
+  },
+  {
+    "drug1": "losartan",
+    "drug2": "potassium",
+    "risk": "MAJOR",
+    "explanation": "May cause dangerously high potassium levels."
+  },
+  {
+    "drug1": "fluoxetine",
+    "drug2": "tramadol",
+    "risk": "MAJOR",
+    "explanation": "Increases risk of serotonin syndrome."
+  },
+  {
+    "drug1": "clopidogrel",
+    "drug2": "omeprazole",
+    "risk": "MODERATE",
+    "explanation": "Omeprazole may reduce effectiveness of clopidogrel."
+  },
+  {
+    "drug1": "diazepam",
+    "drug2": "alcohol",
+    "risk": "MAJOR",
+    "explanation": "Severe sedation and respiratory depression risk."
+  }
+]
