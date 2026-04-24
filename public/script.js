@@ -1,4 +1,6 @@
-const BASE_URL = "";
+// Change this to your actual Render URL after deployment
+const BASE_URL = "https://your-app-name.onrender.com"; 
+
 const medicines = [
   "warfarin", "aspirin", "metformin", "cimetidine",
   "ibuprofen", "lisinopril", "paracetamol",
@@ -19,14 +21,14 @@ window.onload = function() {
 };
 
 async function searchDrug() {
-
   const name = document.getElementById("searchDrug").value.toLowerCase().trim();
   const box = document.getElementById("drugInfoBox");
   const info = document.getElementById("drugInfo");
 
   box.className = "result-box";
 
-  const res = await fetch(`${BASE_URL}/scan`);
+  // FIXED: Changed endpoint from /scan to /drug/${name}
+  const res = await fetch(`${BASE_URL}/drug/${name}`);
   const data = await res.json();
 
   if (data.error) {
@@ -44,7 +46,6 @@ async function searchDrug() {
 }
 
 async function checkInteraction() {
-
   const drug1 = document.getElementById("drug1").value.toLowerCase().trim();
   const drug2 = document.getElementById("drug2").value.toLowerCase().trim();
 
@@ -74,7 +75,6 @@ async function checkInteraction() {
 }
 
 async function uploadImage(event) {
-
   const file = event.target.files[0];
   if (!file) return;
 
@@ -100,7 +100,8 @@ async function uploadImage(event) {
   status.innerText = "Processing image using AI OCR...";
   loader.style.display = "block";
 
-  const res = await fetch(`${BASE_URL}/drug/${name}`, {
+  // FIXED: Changed endpoint to /scan (The correct OCR endpoint)
+  const res = await fetch(`${BASE_URL}/scan`, {
     method: "POST",
     body: formData
   });
@@ -125,13 +126,10 @@ async function uploadImage(event) {
   resultText.innerText = "Detected: " + data.detected.join(", ");
 
   if (data.interactions.length > 0) {
-
     let htmlOutput = "<b>Total Interactions Found: " + data.interactions.length + "</b><br>";
-
     let highest = "SAFE";
 
     data.interactions.forEach(i => {
-
       htmlOutput += `
         <div class="interaction-item">
           ${i.pair}
@@ -143,7 +141,6 @@ async function uploadImage(event) {
       if (i.risk === "MAJOR") highest = "MAJOR";
       else if (i.risk === "MODERATE" && highest !== "MAJOR") highest = "MODERATE";
       else if (i.risk === "MINOR" && highest === "SAFE") highest = "MINOR";
-
     });
 
     explanationText.innerHTML = htmlOutput;
@@ -154,27 +151,23 @@ async function uploadImage(event) {
     resultBox.className = "result-box safe";
   }
 }
+
 function showSuggestions() {
   const input = document.getElementById("searchDrug").value.toLowerCase();
   const box = document.getElementById("suggestionsBox");
 
   box.innerHTML = "";
-
   if (input.length === 0) return;
 
-  const filtered = medicines.filter(med =>
-    med.includes(input)
-  );
+  const filtered = medicines.filter(med => med.includes(input));
 
   filtered.forEach(med => {
     const div = document.createElement("div");
     div.innerText = med;
-
     div.onclick = () => {
       document.getElementById("searchDrug").value = med;
       box.innerHTML = "";
     };
-
     box.appendChild(div);
   });
 }
