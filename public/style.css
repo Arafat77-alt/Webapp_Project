@@ -195,3 +195,8 @@ button:hover {
 .search-btn:hover {
   background-color: #27ae60;
 }
+#imagePreview {
+  display: none;
+  margin-top: 10px;
+  border-radius: 8px;
+}

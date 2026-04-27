@@ -75,6 +75,9 @@ async function checkInteraction() {
 }
 
 async function uploadImage(event) {
+  // reset previous results before new scan
+  document.getElementById("result").innerText = "";
+  document.getElementById("explanation").innerHTML = "";
   const file = event.target.files[0];
   if (!file) return;
 
@@ -170,4 +173,39 @@ function showSuggestions() {
     };
     box.appendChild(div);
   });
+
+  function removeImage() {
+  const preview = document.getElementById("imagePreview");
+  const input = document.getElementById("imageInput");
+  const btn = document.getElementById("removeBtn");
+
+  const resultText = document.getElementById("result");
+  const explanationText = document.getElementById("explanation");
+  const resultBox = document.getElementById("resultBox");
+
+  const status = document.getElementById("ocrStatus");
+  const loader = document.getElementById("loader");
+
+  // 🧹 Clear image preview
+  preview.src = "";
+  preview.style.display = "none";
+
+  // 🧹 Reset file input
+  input.value = "";
+
+  // 🧹 Hide remove button
+  btn.style.display = "none";
+
+  // 🧹 Clear OCR status
+  status.innerText = "";
+
+  // 🧹 Stop loader
+  loader.style.display = "none";
+
+  // 🧹 Reset result UI
+  resultText.innerText = "";
+  explanationText.innerHTML = "";
+  resultBox.className = "result-box";
+ }
+
 }

@@ -46,7 +46,7 @@
 
       <!-- IMAGE OCR -->
       <div class="upload-box">
-        <input type="file" onchange="uploadImage(event)">
+        <input type="file" id="imageInput" onchange="uploadImage(event)">
         <p id="ocrStatus"></p>
         <img id="imagePreview">
         <button onclick="removeImage()" id="removeBtn" style="display:none;">
