@@ -75,7 +75,7 @@ async function checkInteraction() {
 }
 
 async function uploadImage(event) {
-  // reset previous results before new scan
+  // 1. Reset UI
   document.getElementById("result").innerText = "";
   document.getElementById("explanation").innerHTML = "";
   const file = event.target.files[0];
@@ -84,10 +84,10 @@ async function uploadImage(event) {
   const formData = new FormData();
   formData.append("image", file);
 
+  // 2. Setup Preview
   const preview = document.getElementById("imagePreview");
   preview.src = URL.createObjectURL(file);
   preview.style.display = "block";
-
   document.getElementById("removeBtn").style.display = "inline-block";
 
   const resultText = document.getElementById("result");
@@ -97,75 +97,70 @@ async function uploadImage(event) {
   const status = document.getElementById("ocrStatus");
 
   resultText.innerText = "Scanning prescription...";
-  explanationText.innerHTML = "";
-  resultBox.className = "result-box";
-
   status.innerText = "Processing image using AI OCR...";
   loader.style.display = "block";
 
-  // FIXED: Changed endpoint to /scan (The correct OCR endpoint)
-  const res = await fetch(`${BASE_URL}/scan`, {
-    method: "POST",
-    body: formData
-  });
-  if (!res.ok) {
-  console.error(`HTTP Error: ${res.status}`);
-  // If it's a 502, don't even try res.json()
-  alert("The server is currently unreachable (502).");
-  return;
-}
-
-// 2. Safely parse JSON
-try {
-  const data = await res.json();
-  console.log("Success:", data);
-} catch (e) {
-  console.error("Failed to parse JSON:", e);
-}
-
-  const data = await res.json();
-
-  loader.style.display = "none";
-  status.innerText = "";
-
-  if (data.error) {
-    resultText.innerText = "OCR failed";
-    resultBox.className = "result-box minor";
-    return;
-  }
-
-  if (data.detected.length === 0) {
-    resultText.innerText = "No known drugs detected";
-    resultBox.className = "result-box minor";
-    return;
-  }
-
-  resultText.innerText = "Detected: " + data.detected.join(", ");
-
-  if (data.interactions.length > 0) {
-    let htmlOutput = "<b>Total Interactions Found: " + data.interactions.length + "</b><br>";
-    let highest = "SAFE";
-
-    data.interactions.forEach(i => {
-      htmlOutput += `
-        <div class="interaction-item">
-          ${i.pair}
-          <span class="badge ${i.risk.toLowerCase()}">${i.risk}</span>
-          <div>${i.explanation}</div>
-        </div>
-      `;
-
-      if (i.risk === "MAJOR") highest = "MAJOR";
-      else if (i.risk === "MODERATE" && highest !== "MAJOR") highest = "MODERATE";
-      else if (i.risk === "MINOR" && highest === "SAFE") highest = "MINOR";
+  try {
+    const res = await fetch(`${BASE_URL}/scan`, {
+      method: "POST",
+      body: formData
     });
 
-    explanationText.innerHTML = htmlOutput;
-    resultBox.className = "result-box " + highest.toLowerCase();
+    if (!res.ok) {
+      throw new Error(`Server returned ${res.status}`);
+    }
 
-  } else {
-    explanationText.innerHTML = "No significant interactions found.";
-    resultBox.className = "result-box safe";
+    // ONLY CALL THIS ONCE
+    const data = await res.json(); 
+    
+    loader.style.display = "none";
+    status.innerText = "";
+
+    if (data.error) {
+      resultText.innerText = "OCR failed";
+      resultBox.className = "result-box minor";
+      return;
+    }
+
+    if (data.detected.length === 0) {
+      resultText.innerText = "No known drugs detected";
+      resultBox.className = "result-box minor";
+      return;
+    }
+
+    // Success UI Logic
+    resultText.innerText = "Detected: " + data.detected.join(", ");
+
+    if (data.interactions.length > 0) {
+      let htmlOutput = "<b>Total Interactions Found: " + data.interactions.length + "</b><br>";
+      let highest = "safe";
+
+      data.interactions.forEach(i => {
+        htmlOutput += `
+          <div class="interaction-item">
+            ${i.pair}
+            <span class="badge ${i.risk.toLowerCase()}">${i.risk}</span>
+            <div>${i.explanation}</div>
+          </div>`;
+        
+        const risk = i.risk.toLowerCase();
+        if (risk === "major") highest = "major";
+        else if (risk === "moderate" && highest !== "major") highest = "moderate";
+        else if (risk === "minor" && highest === "safe") highest = "minor";
+      });
+
+      explanationText.innerHTML = htmlOutput;
+      resultBox.className = "result-box " + highest;
+    } else {
+      explanationText.innerHTML = "No significant interactions found.";
+      resultBox.className = "result-box safe";
+    }
+
+  } catch (error) {
+    console.error("Fetch Error:", error);
+    loader.style.display = "none";
+    status.innerText = "Error connecting to server.";
+    alert("Server error. Check if backend is awake.");
   }
 }
 
