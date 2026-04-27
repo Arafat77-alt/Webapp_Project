@@ -175,37 +175,35 @@ function showSuggestions() {
   });
 
   function removeImage() {
+  console.log("REMOVE CLICKED"); // 🔍 debug
+
   const preview = document.getElementById("imagePreview");
   const input = document.getElementById("imageInput");
   const btn = document.getElementById("removeBtn");
 
-  const resultText = document.getElementById("result");
-  const explanationText = document.getElementById("explanation");
-  const resultBox = document.getElementById("resultBox");
-
   const status = document.getElementById("ocrStatus");
   const loader = document.getElementById("loader");
 
-  // 🧹 Clear image preview
+  const result = document.getElementById("result");
+  const explanation = document.getElementById("explanation");
+  const resultBox = document.getElementById("resultBox");
+
+  // clear image
   preview.src = "";
   preview.style.display = "none";
 
-  // 🧹 Reset file input
+  // clear input
   input.value = "";
 
-  // 🧹 Hide remove button
+  // hide button
   btn.style.display = "none";
 
-  // 🧹 Clear OCR status
+  // reset UI
   status.innerText = "";
-
-  // 🧹 Stop loader
   loader.style.display = "none";
-
-  // 🧹 Reset result UI
-  resultText.innerText = "";
-  explanationText.innerHTML = "";
+  result.innerText = "";
+  explanation.innerHTML = "";
   resultBox.className = "result-box";
- }
+}
 
 }
