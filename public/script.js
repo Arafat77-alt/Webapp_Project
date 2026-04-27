@@ -1,6 +1,6 @@
 // Change this to your actual Render URL after deployment
 const BASE_URL = "https://medisafe-api.onrender.com"; 
-
+console.log("JS LOADED");
 const medicines = [
   "warfarin", "aspirin", "metformin", "cimetidine",
   "ibuprofen", "lisinopril", "paracetamol",
@@ -108,6 +108,20 @@ async function uploadImage(event) {
     method: "POST",
     body: formData
   });
+  if (!res.ok) {
+  console.error(`HTTP Error: ${res.status}`);
+  // If it's a 502, don't even try res.json()
+  alert("The server is currently unreachable (502).");
+  return;
+}
+
+// 2. Safely parse JSON
+try {
+  const data = await res.json();
+  console.log("Success:", data);
+} catch (e) {
+  console.error("Failed to parse JSON:", e);
+}
 
   const data = await res.json();
 
@@ -174,9 +188,9 @@ function showSuggestions() {
     box.appendChild(div);
   });
 
-  function removeImage() {
-  console.log("REMOVE CLICKED"); // 🔍 debug
-
+  
+}
+function removeImage() {
   const preview = document.getElementById("imagePreview");
   const input = document.getElementById("imageInput");
   const btn = document.getElementById("removeBtn");
@@ -188,22 +202,16 @@ function showSuggestions() {
   const explanation = document.getElementById("explanation");
   const resultBox = document.getElementById("resultBox");
 
-  // clear image
   preview.src = "";
   preview.style.display = "none";
 
-  // clear input
   input.value = "";
-
-  // hide button
   btn.style.display = "none";
 
-  // reset UI
   status.innerText = "";
   loader.style.display = "none";
+
   result.innerText = "";
   explanation.innerHTML = "";
   resultBox.className = "result-box";
-}
-
 }
