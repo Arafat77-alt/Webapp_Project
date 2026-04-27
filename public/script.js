@@ -189,6 +189,7 @@ function removeImage() {
   const preview = document.getElementById("imagePreview");
   const input = document.getElementById("imageInput");
   const btn = document.getElementById("removeBtn");
+  btn.style.display = "inline-block";
 
   const status = document.getElementById("ocrStatus");
   const loader = document.getElementById("loader");

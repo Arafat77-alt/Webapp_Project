@@ -46,13 +46,15 @@
 
       <!-- IMAGE OCR -->
       <div class="upload-box">
-        <input type="file" id="imageInput" onchange="uploadImage(event)">
-        <p id="ocrStatus"></p>
-        <img id="imagePreview" style="display:none; max-width:200px;"> 
-        <button onclick="removeImage()" id="removeBtn" style="display:none;">
-          Remove Image
-        </button>
-      </div>
+    <input type="file" id="imageInput" onchange="uploadImage(event)">
+    <p id="ocrStatus"></p>
+    
+    <img id="imagePreview" style="display:none; max-width:200px;"> 
+    
+    <button onclick="removeImage()" id="removeBtn" style="display:none;">
+        Remove Image
+    </button>
+</div>
       <div id="loader" class="loader" style="display:none;"></div>
 
       <button class="check-btn" onclick="checkInteraction()">
